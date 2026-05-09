@@ -214,7 +214,7 @@ export function CategoryManagerBase({ categories: initial, type, typeLabel }: Ca
             <div key={cat.id}>
               {/* Category row */}
               <div
-                className="flex items-center gap-3 px-4 py-3 hover:bg-muted/30 transition-colors group cursor-pointer"
+                className="flex items-center gap-3 px-4 py-3 hover:bg-muted/30 transition-colors group cursor-pointer min-w-0"
                 onClick={() => toggleExpand(cat.id)}
               >
                 <button
@@ -224,11 +224,11 @@ export function CategoryManagerBase({ categories: initial, type, typeLabel }: Ca
                   {isOpen ? <ChevronDown className="h-4 w-4" /> : <ChevronRight className="h-4 w-4" />}
                 </button>
                 <Tag className="h-4 w-4 text-muted-foreground shrink-0" />
-                <span className="font-medium text-sm flex-1">{cat.name}</span>
+                <span className="font-medium text-sm flex-1 min-w-0 truncate">{cat.name}</span>
                 <Badge variant="outline" className="text-xs shrink-0">
                   {cat.subcategories.length} subcategoria{cat.subcategories.length !== 1 ? "s" : ""}
                 </Badge>
-                <div className="flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                <div className="flex gap-1 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity">
                   <Button
                     variant="ghost"
                     size="icon"
@@ -252,7 +252,7 @@ export function CategoryManagerBase({ categories: initial, type, typeLabel }: Ca
               {isOpen && (
                 <>
                   {cat.subcategories.map((sub) => (
-                    <div key={sub.id} className="flex items-center gap-3 px-4 py-2.5 pl-12 bg-muted/20 border-t group/sub">
+                    <div key={sub.id} className="flex items-center gap-3 px-4 py-2.5 pl-12 bg-muted/20 border-t group/sub min-w-0">
                       {editingSubId === sub.id ? (
                         <div className="flex items-center gap-2 flex-1">
                           <Input
@@ -274,8 +274,8 @@ export function CategoryManagerBase({ categories: initial, type, typeLabel }: Ca
                         </div>
                       ) : (
                         <>
-                          <span className="text-sm text-muted-foreground flex-1">{sub.name}</span>
-                          <div className="flex gap-1 opacity-0 group-hover/sub:opacity-100 transition-opacity">
+                          <span className="text-sm text-muted-foreground flex-1 min-w-0 truncate">{sub.name}</span>
+                          <div className="flex gap-1 sm:opacity-0 sm:group-hover/sub:opacity-100 transition-opacity">
                             <Button variant="ghost" size="icon" className="h-7 w-7" onClick={() => startEditSub(sub)}>
                               <Pencil className="h-3.5 w-3.5" />
                             </Button>

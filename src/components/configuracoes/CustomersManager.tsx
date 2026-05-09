@@ -102,8 +102,8 @@ export function CustomersManager({ customers: initial }: CustomersManagerProps) 
         <p className="text-sm text-muted-foreground">{customers.length} cliente{customers.length !== 1 ? "s" : ""}</p>
       </div>
 
-      <div className="rounded-lg border bg-card">
-        <Table>
+      <div className="rounded-lg border bg-card overflow-x-auto">
+        <Table className="min-w-[420px]">
           <TableHeader>
             <TableRow className="hover:bg-transparent">
               <TableHead>Nome</TableHead>

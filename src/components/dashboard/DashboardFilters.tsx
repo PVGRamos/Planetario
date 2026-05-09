@@ -56,124 +56,123 @@ export function DashboardFilters({ meta }: { meta: Meta }) {
     get("preset") || get("dateMode"));
 
   return (
-    <div className="bg-background border border-border rounded-xl px-4 py-3 flex flex-wrap items-center gap-2">
-      {/* Period presets */}
-      <div className="flex items-center rounded-lg border border-border overflow-hidden shrink-0">
-        {PRESETS.map((p) => (
-          <button
-            key={p.value}
-            onClick={() => update({ preset: p.value === "this_month" ? null : p.value })}
-            className={cn(
-              "px-3 py-1.5 text-xs font-medium transition-colors whitespace-nowrap",
-              preset === p.value
-                ? "bg-primary text-primary-foreground"
-                : "text-muted-foreground hover:bg-muted hover:text-foreground"
-            )}
+    <div className="bg-background border border-border rounded-xl px-4 py-3 flex flex-col sm:flex-row sm:flex-wrap sm:items-center gap-2">
+      {/* Row 1 on mobile: presets + date mode + clear */}
+      <div className="flex items-center gap-2 min-w-0">
+        {/* Period presets — scrollable on mobile */}
+        <div className="overflow-x-auto flex-1 min-w-0">
+          <div className="flex items-center rounded-lg border border-border overflow-hidden w-max">
+            {PRESETS.map((p) => (
+              <button
+                key={p.value}
+                onClick={() => update({ preset: p.value === "this_month" ? null : p.value })}
+                className={cn(
+                  "px-2.5 sm:px-3 py-1.5 text-xs font-medium transition-colors whitespace-nowrap",
+                  preset === p.value
+                    ? "bg-primary text-primary-foreground"
+                    : "text-muted-foreground hover:bg-muted hover:text-foreground"
+                )}
+              >
+                {p.label}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Date mode toggle */}
+        <div className="flex items-center rounded-lg border border-border overflow-hidden shrink-0">
+          {[
+            { value: "competency", label: "Competência" },
+            { value: "cash", label: "Caixa" },
+          ].map((m) => (
+            <button
+              key={m.value}
+              onClick={() => update({ dateMode: m.value === "competency" ? null : m.value })}
+              className={cn(
+                "px-2.5 sm:px-3 py-1.5 text-xs font-medium transition-colors whitespace-nowrap",
+                dateMode === m.value
+                  ? "bg-primary text-primary-foreground"
+                  : "text-muted-foreground hover:bg-muted hover:text-foreground"
+              )}
+            >
+              {m.label}
+            </button>
+          ))}
+        </div>
+
+        {/* Loading indicator */}
+        {isPending && (
+          <RefreshCw className="h-3.5 w-3.5 text-muted-foreground animate-spin shrink-0" />
+        )}
+
+        {/* Clear filters */}
+        {hasActiveFilters && (
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={clearAll}
+            className="h-8 text-xs text-muted-foreground hover:text-foreground gap-1 px-2 shrink-0"
           >
-            {p.label}
-          </button>
-        ))}
+            <X className="h-3 w-3" />
+            Limpar
+          </Button>
+        )}
       </div>
 
       {/* Divider */}
-      <div className="h-6 w-px bg-border shrink-0 hidden sm:block" />
+      <div className="h-px sm:h-6 sm:w-px bg-border" />
 
-      {/* Company */}
-      {meta.companies.length > 1 && (
+      {/* Row 2 on mobile: selects */}
+      <div className="flex flex-wrap items-center gap-2">
+        {meta.companies.length > 1 && (
+          <Select
+            value={companyId || "all"}
+            onValueChange={(v) => update({ companyId: v === "all" ? null : v })}
+          >
+            <SelectTrigger className="h-8 text-xs w-[130px]">
+              <SelectValue placeholder="Empresa" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="all">Todas as empresas</SelectItem>
+              {meta.companies.map((c) => (
+                <SelectItem key={c.id} value={c.id}>{c.name}</SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        )}
+
         <Select
-          value={companyId || "all"}
-          onValueChange={(v) => update({ companyId: v === "all" ? null : v })}
-        >
-          <SelectTrigger className="h-8 text-xs w-[130px]">
-            <SelectValue placeholder="Empresa" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="all">Todas as empresas</SelectItem>
-            {meta.companies.map((c) => (
-              <SelectItem key={c.id} value={c.id}>{c.name}</SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
-      )}
-
-      {/* Category */}
-      <Select
-        value={categoryId || "all"}
-        onValueChange={(v) => update({ categoryId: v === "all" ? null : v })}
-      >
-        <SelectTrigger className="h-8 text-xs w-[140px]">
-          <SelectValue placeholder="Categoria" />
-        </SelectTrigger>
-        <SelectContent>
-          <SelectItem value="all">Todas categorias</SelectItem>
-          {meta.categories.map((c) => (
-            <SelectItem key={c.id} value={c.id}>{c.name}</SelectItem>
-          ))}
-        </SelectContent>
-      </Select>
-
-      {/* Cost center */}
-      {meta.costCenters.length > 0 && (
-        <Select
-          value={costCenterId || "all"}
-          onValueChange={(v) => update({ costCenterId: v === "all" ? null : v })}
+          value={categoryId || "all"}
+          onValueChange={(v) => update({ categoryId: v === "all" ? null : v })}
         >
           <SelectTrigger className="h-8 text-xs w-[140px]">
-            <SelectValue placeholder="Centro de custo" />
+            <SelectValue placeholder="Categoria" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="all">Todos centros</SelectItem>
-            {meta.costCenters.map((c) => (
+            <SelectItem value="all">Todas categorias</SelectItem>
+            {meta.categories.map((c) => (
               <SelectItem key={c.id} value={c.id}>{c.name}</SelectItem>
             ))}
           </SelectContent>
         </Select>
-      )}
 
-      {/* Divider */}
-      <div className="h-6 w-px bg-border shrink-0 hidden sm:block" />
-
-      {/* Date mode toggle */}
-      <div className="flex items-center rounded-lg border border-border overflow-hidden shrink-0">
-        {[
-          { value: "competency", label: "Competência" },
-          { value: "cash", label: "Caixa" },
-        ].map((m) => (
-          <button
-            key={m.value}
-            onClick={() => update({ dateMode: m.value === "competency" ? null : m.value })}
-            className={cn(
-              "px-3 py-1.5 text-xs font-medium transition-colors whitespace-nowrap",
-              dateMode === m.value
-                ? "bg-primary text-primary-foreground"
-                : "text-muted-foreground hover:bg-muted hover:text-foreground"
-            )}
+        {meta.costCenters.length > 0 && (
+          <Select
+            value={costCenterId || "all"}
+            onValueChange={(v) => update({ costCenterId: v === "all" ? null : v })}
           >
-            {m.label}
-          </button>
-        ))}
+            <SelectTrigger className="h-8 text-xs w-[140px]">
+              <SelectValue placeholder="Centro de custo" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="all">Todos centros</SelectItem>
+              {meta.costCenters.map((c) => (
+                <SelectItem key={c.id} value={c.id}>{c.name}</SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        )}
       </div>
-
-      {/* Spacer */}
-      <div className="flex-1" />
-
-      {/* Loading indicator */}
-      {isPending && (
-        <RefreshCw className="h-3.5 w-3.5 text-muted-foreground animate-spin shrink-0" />
-      )}
-
-      {/* Clear filters */}
-      {hasActiveFilters && (
-        <Button
-          variant="ghost"
-          size="sm"
-          onClick={clearAll}
-          className="h-8 text-xs text-muted-foreground hover:text-foreground gap-1 px-2"
-        >
-          <X className="h-3 w-3" />
-          Limpar
-        </Button>
-      )}
     </div>
   );
 }

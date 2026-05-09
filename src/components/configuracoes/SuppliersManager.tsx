@@ -102,8 +102,8 @@ export function SuppliersManager({ suppliers: initial }: SuppliersManagerProps) 
         <p className="text-sm text-muted-foreground">{suppliers.length} fornecedor{suppliers.length !== 1 ? "es" : ""}</p>
       </div>
 
-      <div className="rounded-lg border bg-card">
-        <Table>
+      <div className="rounded-lg border bg-card overflow-x-auto">
+        <Table className="min-w-[420px]">
           <TableHeader>
             <TableRow className="hover:bg-transparent">
               <TableHead>Nome</TableHead>
