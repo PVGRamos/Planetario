@@ -1,7 +1,7 @@
 "use server";
 
 import { prisma } from "@/lib/prisma";
-import { revalidatePath, revalidateTag } from "next/cache";
+import { revalidatePath } from "next/cache";
 import { z } from "zod";
 
 const SubcategorySchema = z.object({
@@ -22,7 +22,6 @@ export async function createSubcategory(data: { name: string; categoryId: string
 
   await prisma.subcategory.create({ data: parsed.data });
   revalidatePath("/configuracoes");
-  revalidateTag("meta");
   return { success: true };
 }
 
@@ -32,13 +31,11 @@ export async function updateSubcategory(id: string, data: { name: string; catego
 
   await prisma.subcategory.update({ where: { id }, data: parsed.data });
   revalidatePath("/configuracoes");
-  revalidateTag("meta");
   return { success: true };
 }
 
 export async function deleteSubcategory(id: string) {
   await prisma.subcategory.delete({ where: { id } });
   revalidatePath("/configuracoes");
-  revalidateTag("meta");
   return { success: true };
 }

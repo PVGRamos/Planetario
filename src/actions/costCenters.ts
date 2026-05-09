@@ -1,7 +1,7 @@
 "use server";
 
 import { prisma } from "@/lib/prisma";
-import { revalidatePath, revalidateTag } from "next/cache";
+import { revalidatePath } from "next/cache";
 import { z } from "zod";
 
 export async function getCostCenters() {
@@ -21,13 +21,11 @@ export async function updateCostCenter(id: string, data: { name: string }) {
   if (!parsed.success) return { error: parsed.error.errors[0].message };
   await prisma.costCenter.update({ where: { id }, data: { name: parsed.data.name } });
   revalidatePath("/configuracoes");
-  revalidateTag("meta");
   return { success: true };
 }
 
 export async function deleteCostCenter(id: string) {
   await prisma.costCenter.delete({ where: { id } });
   revalidatePath("/configuracoes");
-  revalidateTag("meta");
   return { success: true };
 }

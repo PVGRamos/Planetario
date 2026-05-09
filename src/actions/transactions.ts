@@ -203,7 +203,7 @@ const getCachedTransactionMeta = unstable_cache(
     return { companies, categories, costCenters, suppliers, customers };
   },
   ["transaction-meta"],
-  { revalidate: 300, tags: ["meta"] }
+  { revalidate: 300 }
 );
 
 export async function getTransactionMeta() {

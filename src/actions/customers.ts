@@ -1,7 +1,7 @@
 "use server";
 
 import { prisma } from "@/lib/prisma";
-import { revalidatePath, revalidateTag } from "next/cache";
+import { revalidatePath } from "next/cache";
 import { z } from "zod";
 
 const CustomerSchema = z.object({
@@ -30,7 +30,6 @@ export async function createCustomer(data: { name: string; email?: string; phone
   });
   revalidatePath("/configuracoes");
   revalidatePath("/financeiro");
-  revalidateTag("meta");
   return { success: true, data: customer };
 }
 
@@ -50,7 +49,6 @@ export async function updateCustomer(
     },
   });
   revalidatePath("/configuracoes");
-  revalidateTag("meta");
   return { success: true, data: customer };
 }
 
@@ -60,6 +58,5 @@ export async function deleteCustomer(id: string) {
     data: { active: false },
   });
   revalidatePath("/configuracoes");
-  revalidateTag("meta");
   return { success: true };
 }

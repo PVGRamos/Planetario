@@ -87,7 +87,7 @@ const getCachedMeta = unstable_cache(
     return { categories, companies, costCenters, suppliers, customers };
   },
   ["dashboard-meta"],
-  { revalidate: 300, tags: ["meta"] }
+  { revalidate: 300 }
 );
 
 function resolvePeriod(params: DashboardFilterParams): { dateFrom: Date; dateTo: Date } {
