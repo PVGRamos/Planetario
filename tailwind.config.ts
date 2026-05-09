@@ -10,7 +10,7 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Sora", "sans-serif"],
+        sans: ["var(--font-sora)", "sans-serif"],
         mono: ["IBM Plex Mono", "monospace"],
       },
       colors: {
