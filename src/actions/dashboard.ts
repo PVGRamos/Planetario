@@ -1,5 +1,6 @@
 "use server";
 
+import { unstable_cache } from "next/cache";
 import { prisma } from "@/lib/prisma";
 import { TransactionType, TransactionStatus, type Prisma } from "@prisma/client";
 import { serializeTransaction } from "@/lib/utils";
@@ -73,6 +74,21 @@ export type DashboardData = {
     customers: { id: string; name: string }[];
   };
 };
+
+const getCachedMeta = unstable_cache(
+  async () => {
+    const [categories, companies, costCenters, suppliers, customers] = await Promise.all([
+      prisma.category.findMany({ select: { id: true, name: true, type: true } }),
+      prisma.company.findMany({ select: { id: true, name: true } }),
+      prisma.costCenter.findMany({ select: { id: true, name: true } }),
+      prisma.supplier.findMany({ where: { active: true }, select: { id: true, name: true } }),
+      prisma.customer.findMany({ where: { active: true }, select: { id: true, name: true } }),
+    ]);
+    return { categories, companies, costCenters, suppliers, customers };
+  },
+  ["dashboard-meta"],
+  { revalidate: 300, tags: ["meta"] }
+);
 
 function resolvePeriod(params: DashboardFilterParams): { dateFrom: Date; dateTo: Date } {
   const now = new Date();
@@ -151,7 +167,7 @@ export async function getDashboardData(params: DashboardFilterParams = {}): Prom
     currentTxs, prevTxs, expCatGroup, incCatGroup,
     companyGroup, ccGroup, suppGroup, cusGroup,
     upcomingList, overdueList, recentTxs,
-  ], monthly6Raw, [categories, companies, costCenters, suppliers, customers]] = await Promise.all([
+  ], allMonthly6, { categories, companies, costCenters, suppliers, customers }] = await Promise.all([
     Promise.all([
       prisma.transaction.findMany({
         where: currentWhere,
@@ -221,13 +237,19 @@ export async function getDashboardData(params: DashboardFilterParams = {}): Prom
           status: { in: [TransactionStatus.PENDING, TransactionStatus.OVERDUE] },
           dueDate: { gte: now, lte: upcoming30 },
         },
-        include: { company: true },
+        select: {
+          id: true, description: true, amount: true, dueDate: true, type: true,
+          company: { select: { name: true } },
+        },
         orderBy: { dueDate: "asc" },
         take: 10,
       }),
       prisma.transaction.findMany({
         where: { ...companyOnly, status: TransactionStatus.OVERDUE },
-        include: { company: true },
+        select: {
+          id: true, description: true, amount: true, dueDate: true, type: true,
+          company: { select: { name: true } },
+        },
         orderBy: { dueDate: "asc" },
         take: 10,
       }),
@@ -241,25 +263,15 @@ export async function getDashboardData(params: DashboardFilterParams = {}): Prom
         take: 8,
       }),
     ]),
-    Promise.all(
-      months6.map((m) =>
-        prisma.transaction.findMany({
-          where: {
-            competencyDate: { gte: m.start, lte: m.end },
-            status: { notIn: [TransactionStatus.CANCELED] },
-            ...companyOnly,
-          },
-          select: { type: true, amount: true },
-        })
-      )
-    ),
-    Promise.all([
-      prisma.category.findMany({ select: { id: true, name: true, type: true } }),
-      prisma.company.findMany({ select: { id: true, name: true } }),
-      prisma.costCenter.findMany({ select: { id: true, name: true } }),
-      prisma.supplier.findMany({ where: { active: true }, select: { id: true, name: true } }),
-      prisma.customer.findMany({ where: { active: true }, select: { id: true, name: true } }),
-    ]),
+    prisma.transaction.findMany({
+      where: {
+        competencyDate: { gte: months6[0].start, lte: months6[months6.length - 1].end },
+        status: { notIn: [TransactionStatus.CANCELED] },
+        ...companyOnly,
+      },
+      select: { type: true, amount: true, competencyDate: true },
+    }),
+    getCachedMeta(),
   ]);
 
   const catMap = Object.fromEntries(categories.map((c) => [c.id, c.name]));
@@ -362,8 +374,10 @@ export async function getDashboardData(params: DashboardFilterParams = {}): Prom
   }));
 
   // 6-month cash flow
-  const cashFlowData = months6.map((m, i) => {
-    const txs = monthly6Raw[i];
+  const cashFlowData = months6.map((m) => {
+    const txs = allMonthly6.filter(
+      (t) => t.competencyDate >= m.start && t.competencyDate <= m.end
+    );
     const label = m.label.charAt(0).toUpperCase() + m.label.slice(1);
     return {
       month: label,

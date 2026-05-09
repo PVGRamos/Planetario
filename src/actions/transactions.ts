@@ -1,7 +1,7 @@
 "use server";
 
 import { prisma } from "@/lib/prisma";
-import { revalidatePath } from "next/cache";
+import { revalidatePath, unstable_cache } from "next/cache";
 import { TransactionType, PaymentMethod, TransactionStatus, type Prisma } from "@prisma/client";
 import { z } from "zod";
 
@@ -188,16 +188,24 @@ export async function deleteTransaction(id: string) {
   return { success: true };
 }
 
+const getCachedTransactionMeta = unstable_cache(
+  async () => {
+    const [companies, categories, costCenters, suppliers, customers] = await Promise.all([
+      prisma.company.findMany({ orderBy: { name: "asc" } }),
+      prisma.category.findMany({
+        include: { subcategories: { orderBy: { name: "asc" } } },
+        orderBy: { name: "asc" },
+      }),
+      prisma.costCenter.findMany({ orderBy: { name: "asc" } }),
+      prisma.supplier.findMany({ where: { active: true }, orderBy: { name: "asc" } }),
+      prisma.customer.findMany({ where: { active: true }, orderBy: { name: "asc" } }),
+    ]);
+    return { companies, categories, costCenters, suppliers, customers };
+  },
+  ["transaction-meta"],
+  { revalidate: 300, tags: ["meta"] }
+);
+
 export async function getTransactionMeta() {
-  const [companies, categories, costCenters, suppliers, customers] = await Promise.all([
-    prisma.company.findMany({ orderBy: { name: "asc" } }),
-    prisma.category.findMany({
-      include: { subcategories: { orderBy: { name: "asc" } } },
-      orderBy: { name: "asc" },
-    }),
-    prisma.costCenter.findMany({ orderBy: { name: "asc" } }),
-    prisma.supplier.findMany({ where: { active: true }, orderBy: { name: "asc" } }),
-    prisma.customer.findMany({ where: { active: true }, orderBy: { name: "asc" } }),
-  ]);
-  return { companies, categories, costCenters, suppliers, customers };
+  return getCachedTransactionMeta();
 }

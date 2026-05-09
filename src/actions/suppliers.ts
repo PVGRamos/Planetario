@@ -1,7 +1,7 @@
 "use server";
 
 import { prisma } from "@/lib/prisma";
-import { revalidatePath } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
 import { z } from "zod";
 
 const SupplierSchema = z.object({
@@ -29,6 +29,7 @@ export async function createSupplier(data: { name: string; email?: string; phone
   });
   revalidatePath("/configuracoes");
   revalidatePath("/financeiro");
+  revalidateTag("meta");
   return { success: true, data: supplier };
 }
 
@@ -49,6 +50,7 @@ export async function updateSupplier(
     },
   });
   revalidatePath("/configuracoes");
+  revalidateTag("meta");
   return { success: true, data: supplier };
 }
 
@@ -58,5 +60,6 @@ export async function deleteSupplier(id: string) {
     data: { active: false },
   });
   revalidatePath("/configuracoes");
+  revalidateTag("meta");
   return { success: true };
 }

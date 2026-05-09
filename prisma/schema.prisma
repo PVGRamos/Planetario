@@ -132,5 +132,14 @@ model Transaction {
   createdAt      DateTime          @default(now())
   updatedAt      DateTime          @updatedAt
 
+  @@index([companyId])
+  @@index([categoryId])
+  @@index([supplierId])
+  @@index([customerId])
+  @@index([competencyDate])
+  @@index([dueDate])
+  @@index([status])
+  @@index([competencyDate, companyId])
+  @@index([dueDate, status])
   @@map("transactions")
 }

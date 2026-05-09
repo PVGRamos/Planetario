@@ -1,7 +1,7 @@
 "use server";
 
 import { prisma } from "@/lib/prisma";
-import { revalidatePath } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
 import { z } from "zod";
 import type { TransactionType } from "@prisma/client";
 
@@ -31,6 +31,7 @@ export async function createCategory(data: { name: string; type: "INCOME" | "EXP
 
   const category = await prisma.category.create({ data: { name: parsed.data.name, type: parsed.data.type } });
   revalidatePath("/configuracoes");
+  revalidateTag("meta");
   return { success: true, data: { ...category, subcategories: [] } };
 }
 
@@ -40,12 +41,14 @@ export async function updateCategory(id: string, data: { name: string }) {
 
   const category = await prisma.category.update({ where: { id }, data: { name: parsed.data.name } });
   revalidatePath("/configuracoes");
+  revalidateTag("meta");
   return { success: true, data: category };
 }
 
 export async function deleteCategory(id: string) {
   await prisma.category.delete({ where: { id } });
   revalidatePath("/configuracoes");
+  revalidateTag("meta");
   return { success: true };
 }
 
@@ -58,6 +61,7 @@ export async function createSubcategory(data: { name: string; categoryId: string
 
   const subcategory = await prisma.subcategory.create({ data: { name: parsed.data.name, categoryId: parsed.data.categoryId } });
   revalidatePath("/configuracoes");
+  revalidateTag("meta");
   return { success: true, data: subcategory };
 }
 
@@ -67,11 +71,13 @@ export async function updateSubcategory(id: string, data: { name: string }) {
 
   await prisma.subcategory.update({ where: { id }, data: { name: parsed.data.name } });
   revalidatePath("/configuracoes");
+  revalidateTag("meta");
   return { success: true };
 }
 
 export async function deleteSubcategory(id: string) {
   await prisma.subcategory.delete({ where: { id } });
   revalidatePath("/configuracoes");
+  revalidateTag("meta");
   return { success: true };
 }
