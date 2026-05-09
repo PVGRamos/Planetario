@@ -48,8 +48,6 @@ export default function LoginPage() {
       />
       {/* Dark overlay */}
       <div className="absolute inset-0 bg-[#071728]/70" />
-      {/* Subtle grid background */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:48px_48px]" />
 
       <div className="relative w-full max-w-sm space-y-8">
         {/* Logo */}
