@@ -77,7 +77,7 @@ export default function LoginPage() {
                   placeholder="seu@email.com"
                   required
                   autoComplete="email"
-                  className="bg-white/8 border-white/15 text-white placeholder:text-white/30 focus-visible:ring-[#2574D4] focus-visible:border-[#2574D4]"
+                  className="bg-white/8 border-white/15 text-white placeholder:text-white/30 focus-visible:ring-[#2574D4] focus-visible:border-[#2574D4] [&:-webkit-autofill]:[-webkit-text-fill-color:white] [&:-webkit-autofill]:[transition:background-color_9999s_ease]"
                 />
               </div>
 
@@ -91,7 +91,7 @@ export default function LoginPage() {
                   placeholder="••••••••"
                   required
                   autoComplete="current-password"
-                  className="bg-white/8 border-white/15 text-white placeholder:text-white/30 focus-visible:ring-[#2574D4] focus-visible:border-[#2574D4]"
+                  className="bg-white/8 border-white/15 text-white placeholder:text-white/30 focus-visible:ring-[#2574D4] focus-visible:border-[#2574D4] [&:-webkit-autofill]:[-webkit-text-fill-color:white] [&:-webkit-autofill]:[transition:background-color_9999s_ease]"
                 />
               </div>
 
