@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"><style>
+@font-face { font-family: 'Manrope'; src: url('../fonts/Manrope-VariableFont_wght.ttf') format('truetype-variations'); font-weight: 200 800; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Manrope'; src: url('../fonts/Manrope-Light.ttf') format('truetype'); font-weight: 300; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Manrope'; src: url('../fonts/Manrope-Regular.ttf') format('truetype'); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Manrope'; src: url('../fonts/Manrope-Medium.ttf') format('truetype'); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Manrope'; src: url('../fonts/Manrope-SemiBold.ttf') format('truetype'); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Manrope'; src: url('../fonts/Manrope-Bold.ttf') format('truetype'); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Manrope'; src: url('../fonts/Manrope-ExtraBold.ttf') format('truetype'); font-weight: 800; font-style: normal; font-display: swap; }
+</style>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Manrope', sans-serif; background: #fff; padding: 20px; }
+.row { display: flex; gap: 10px; flex-wrap: wrap; }
+.swatch { border-radius: 6px; overflow: hidden; flex: 1; min-width: 60px; }
+.color-block { height: 56px; }
+.swatch-info { padding: 6px 8px; background: #fff; border: 1px solid #E8EDF2; border-top: none; border-radius: 0 0 6px 6px; }
+.swatch-name { font-size: 11px; font-weight: 600; color: #0F1C2E; }
+.swatch-hex  { font-size: 10px; color: #64748B; font-family: monospace; margin-top: 1px; }
+.label { font-size: 11px; font-weight: 600; color: #64748B; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 8px; }
+</style>
+</head>
+<body>
+<div class="label">Neutral Scale</div>
+<div class="row">
+  <div class="swatch"><div class="color-block" style="background:#0F1C2E"></div><div class="swatch-info"><div class="swatch-name">900</div><div class="swatch-hex">#0F1C2E</div></div></div>
+  <div class="swatch"><div class="color-block" style="background:#1E2D3D"></div><div class="swatch-info"><div class="swatch-name">800</div><div class="swatch-hex">#1E2D3D</div></div></div>
+  <div class="swatch"><div class="color-block" style="background:#334155"></div><div class="swatch-info"><div class="swatch-name">700</div><div class="swatch-hex">#334155</div></div></div>
+  <div class="swatch"><div class="color-block" style="background:#64748B"></div><div class="swatch-info"><div class="swatch-name">600</div><div class="swatch-hex">#64748B</div></div></div>
+  <div class="swatch"><div class="color-block" style="background:#94A3B8"></div><div class="swatch-info"><div class="swatch-name">500</div><div class="swatch-hex">#94A3B8</div></div></div>
+  <div class="swatch"><div class="color-block" style="background:#CBD5E1"></div><div class="swatch-info"><div class="swatch-name">400</div><div class="swatch-hex">#CBD5E1</div></div></div>
+  <div class="swatch"><div class="color-block" style="background:#D1D9E0"></div><div class="swatch-info"><div class="swatch-name">300</div><div class="swatch-hex">#D1D9E0</div></div></div>
+  <div class="swatch"><div class="color-block" style="background:#E8EDF2"></div><div class="swatch-info"><div class="swatch-name">200</div><div class="swatch-hex">#E8EDF2</div></div></div>
+  <div class="swatch"><div class="color-block" style="background:#F4F6F8; border:1px solid #D1D9E0; border-bottom:none; border-radius:6px 6px 0 0;"></div><div class="swatch-info"><div class="swatch-name">100</div><div class="swatch-hex">#F4F6F8</div></div></div>
+  <div class="swatch"><div class="color-block" style="background:#FFFFFF; border:1px solid #D1D9E0; border-bottom:none; border-radius:6px 6px 0 0;"></div><div class="swatch-info"><div class="swatch-name">White</div><div class="swatch-hex">#FFFFFF</div></div></div>
+</div>
+</body>
+</html>

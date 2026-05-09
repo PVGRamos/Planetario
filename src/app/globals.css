@@ -1,0 +1,125 @@
+/* Sora — self-hosted variable font */
+@font-face {
+  font-family: 'Sora';
+  src: url('/fonts/Sora-VariableFont_wght.ttf') format('truetype-variations');
+  font-weight: 100 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Sora';
+  src: url('/fonts/Sora-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Sora';
+  src: url('/fonts/Sora-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Sora';
+  src: url('/fonts/Sora-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Sora';
+  src: url('/fonts/Sora-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Sora';
+  src: url('/fonts/Sora-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* shadcn/ui tokens — Light Mode */
+    --background: 210 20% 98%;
+    --foreground: 213 47% 12%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 213 47% 12%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 213 47% 12%;
+
+    --primary: 214 77% 40%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 210 17% 93%;
+    --secondary-foreground: 213 47% 12%;
+
+    --muted: 210 17% 93%;
+    --muted-foreground: 213 14% 43%;
+
+    --accent: 210 17% 93%;
+    --accent-foreground: 213 47% 12%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 213 20% 86%;
+    --input: 213 20% 86%;
+    --ring: 214 77% 40%;
+
+    --radius: 0.625rem;
+  }
+
+  .dark {
+    --background: 222 47% 7%;
+    --foreground: 210 20% 96%;
+
+    --card: 222 40% 10%;
+    --card-foreground: 210 20% 96%;
+
+    --popover: 222 40% 10%;
+    --popover-foreground: 210 20% 96%;
+
+    --primary: 214 77% 58%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 30% 16%;
+    --secondary-foreground: 210 20% 96%;
+
+    --muted: 220 30% 16%;
+    --muted-foreground: 213 14% 60%;
+
+    --accent: 220 30% 16%;
+    --accent-foreground: 210 20% 96%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 25% 18%;
+    --input: 220 25% 18%;
+    --ring: 214 77% 58%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold tracking-tight;
+  }
+}

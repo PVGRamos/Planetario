@@ -1,0 +1,340 @@
+/* ============================================================
+   PLANETA CARGAS — Design Tokens v1.0
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+/* Brand font — Manrope, self-hosted */
+@font-face {
+  font-family: 'Manrope';
+  src: url('fonts/Manrope-VariableFont_wght.ttf') format('truetype-variations');
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Manrope';
+  src: url('fonts/Manrope-ExtraLight.ttf') format('truetype');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Manrope';
+  src: url('fonts/Manrope-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Manrope';
+  src: url('fonts/Manrope-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Manrope';
+  src: url('fonts/Manrope-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Manrope';
+  src: url('fonts/Manrope-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Manrope';
+  src: url('fonts/Manrope-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Manrope';
+  src: url('fonts/Manrope-ExtraBold.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ============================================================
+   COLOR TOKENS — Base Palette
+   ============================================================ */
+:root {
+  /* Primary */
+  --color-primary-900: #071728;
+  --color-primary-800: #0F2A4A;
+  --color-primary-700: #163D6E;
+  --color-primary-600: #1A5FB4;
+  --color-primary-500: #2574D4;
+  --color-primary-400: #2D9CDB;
+  --color-primary-300: #7EC8F0;
+  --color-primary-200: #BAE0F8;
+  --color-primary-100: #E8F4FD;
+
+  /* Neutral */
+  --color-neutral-900: #0F1C2E;
+  --color-neutral-800: #1E2D3D;
+  --color-neutral-700: #334155;
+  --color-neutral-600: #64748B;
+  --color-neutral-500: #94A3B8;
+  --color-neutral-400: #CBD5E1;
+  --color-neutral-300: #D1D9E0;
+  --color-neutral-200: #E8EDF2;
+  --color-neutral-100: #F4F6F8;
+  --color-neutral-50:  #FAFBFC;
+  --color-white:       #FFFFFF;
+
+  /* Status — Green */
+  --color-green-700: #15803D;
+  --color-green-600: #16A34A;
+  --color-green-100: #DCFCE7;
+
+  /* Status — Yellow */
+  --color-yellow-700: #B45309;
+  --color-yellow-600: #D97706;
+  --color-yellow-100: #FEF3C7;
+
+  /* Status — Red */
+  --color-red-700: #9B3535;
+  --color-red-600: #C94B4B;
+  --color-red-100: #FDE8E8;
+
+  /* Status — Blue (in-progress) */
+  --color-blue-700: #1D4ED8;
+  --color-blue-600: #1A5FB4;
+  --color-blue-100: #DBEAFE;
+
+  /* ============================================================
+     SEMANTIC COLOR TOKENS
+     ============================================================ */
+
+  /* Foreground */
+  --fg-primary:   var(--color-neutral-900);
+  --fg-secondary: var(--color-neutral-600);
+  --fg-tertiary:  var(--color-neutral-500);
+  --fg-inverted:  var(--color-white);
+  --fg-link:      var(--color-primary-600);
+  --fg-link-hover:var(--color-primary-700);
+
+  /* Background */
+  --bg-page:      var(--color-neutral-100);
+  --bg-surface:   var(--color-white);
+  --bg-surface-2: var(--color-neutral-50);
+  --bg-sidebar:   var(--color-primary-800);
+  --bg-sidebar-active: var(--color-primary-700);
+  --bg-hover:     var(--color-neutral-100);
+  --bg-selected:  var(--color-primary-100);
+
+  /* Border */
+  --border-default: var(--color-neutral-300);
+  --border-strong:  var(--color-neutral-400);
+  --border-focus:   var(--color-primary-600);
+  --border-error:   var(--color-red-600);
+
+  /* Brand */
+  --brand-primary:  var(--color-primary-800);
+  --brand-action:   var(--color-primary-600);
+  --brand-accent:   var(--color-primary-400);
+
+  /* Status semantic */
+  --status-success-bg:   var(--color-green-100);
+  --status-success-fg:   var(--color-green-700);
+  --status-success-border: var(--color-green-600);
+
+  --status-warning-bg:   var(--color-yellow-100);
+  --status-warning-fg:   var(--color-yellow-700);
+  --status-warning-border: var(--color-yellow-600);
+
+  --status-error-bg:     var(--color-red-100);
+  --status-error-fg:     var(--color-red-700);
+  --status-error-border: var(--color-red-600);
+
+  --status-info-bg:      var(--color-blue-100);
+  --status-info-fg:      var(--color-blue-700);
+  --status-info-border:  var(--color-blue-600);
+
+  /* ============================================================
+     TYPOGRAPHY TOKENS
+     ============================================================ */
+
+  /* Font Families */
+  --font-sans:  'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono:  'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace;
+
+  /* Font Sizes */
+  --text-xs:   12px;
+  --text-sm:   14px;
+  --text-base: 16px;
+  --text-lg:   20px;
+  --text-xl:   24px;
+  --text-2xl:  32px;
+  --text-3xl:  40px;
+  --text-4xl:  48px;
+
+  /* Font Weights */
+  --weight-light:    300;
+  --weight-regular:  400;
+  --weight-medium:   500;
+  --weight-semibold: 600;
+  --weight-bold:     700;
+
+  /* Line Heights */
+  --leading-tight:   1.2;
+  --leading-snug:    1.375;
+  --leading-normal:  1.5;
+  --leading-relaxed: 1.625;
+
+  /* Letter Spacing */
+  --tracking-tight:  -0.02em;
+  --tracking-normal:  0em;
+  --tracking-wide:    0.04em;
+  --tracking-wider:   0.08em;
+
+  /* ============================================================
+     SPACING TOKENS
+     ============================================================ */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  20px;
+  --space-6:  24px;
+  --space-8:  32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+
+  /* ============================================================
+     BORDER RADIUS TOKENS
+     ============================================================ */
+  --radius-sm:   4px;
+  --radius-md:   6px;
+  --radius-lg:   8px;
+  --radius-xl:   12px;
+  --radius-full: 9999px;
+
+  /* ============================================================
+     SHADOW TOKENS
+     ============================================================ */
+  --shadow-xs:  0 1px 2px rgba(0,0,0,0.05);
+  --shadow-sm:  0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06);
+  --shadow-md:  0 4px 6px rgba(0,0,0,0.07), 0 2px 4px rgba(0,0,0,0.06);
+  --shadow-lg:  0 4px 16px rgba(0,0,0,0.12), 0 2px 6px rgba(0,0,0,0.08);
+  --shadow-xl:  0 20px 40px rgba(0,0,0,0.15), 0 8px 16px rgba(0,0,0,0.08);
+  --shadow-focus: 0 0 0 3px rgba(26,95,180,0.25);
+
+  /* ============================================================
+     TRANSITIONS
+     ============================================================ */
+  --transition-fast:   150ms ease-out;
+  --transition-normal: 200ms ease-out;
+  --transition-slow:   300ms ease-out;
+}
+
+/* ============================================================
+   BASE SEMANTIC ELEMENT STYLES
+   ============================================================ */
+
+html, body {
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  color: var(--fg-primary);
+  background-color: var(--bg-page);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1 {
+  font-size: var(--text-2xl);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--fg-primary);
+  margin: 0 0 var(--space-4);
+}
+
+h2 {
+  font-size: var(--text-xl);
+  font-weight: var(--weight-semibold);
+  line-height: var(--leading-tight);
+  color: var(--fg-primary);
+  margin: 0 0 var(--space-3);
+}
+
+h3 {
+  font-size: var(--text-lg);
+  font-weight: var(--weight-semibold);
+  line-height: var(--leading-snug);
+  color: var(--fg-primary);
+  margin: 0 0 var(--space-2);
+}
+
+h4 {
+  font-size: var(--text-base);
+  font-weight: var(--weight-semibold);
+  line-height: var(--leading-snug);
+  color: var(--fg-primary);
+  margin: 0 0 var(--space-2);
+}
+
+p {
+  font-size: var(--text-base);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-relaxed);
+  color: var(--fg-primary);
+  margin: 0 0 var(--space-4);
+}
+
+.text-sm {
+  font-size: var(--text-sm);
+  line-height: var(--leading-normal);
+}
+
+.text-xs {
+  font-size: var(--text-xs);
+  line-height: var(--leading-normal);
+}
+
+label {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  color: var(--fg-primary);
+}
+
+code, pre, .mono {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  background: var(--color-neutral-100);
+  border-radius: var(--radius-sm);
+  padding: 2px 6px;
+}
+
+a {
+  color: var(--fg-link);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+a:hover {
+  color: var(--fg-link-hover);
+  text-decoration: underline;
+}
+
+/* ============================================================
+   UTILITY CLASSES
+   ============================================================ */
+
+.text-secondary { color: var(--fg-secondary); }
+.text-tertiary  { color: var(--fg-tertiary); }
+.text-inverted  { color: var(--fg-inverted); }
+.font-mono      { font-family: var(--font-mono); }
+.font-medium    { font-weight: var(--weight-medium); }
+.font-semibold  { font-weight: var(--weight-semibold); }
+.font-bold      { font-weight: var(--weight-bold); }

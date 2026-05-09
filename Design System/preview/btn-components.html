@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"><style>
+@font-face { font-family: 'Manrope'; src: url('../fonts/Manrope-VariableFont_wght.ttf') format('truetype-variations'); font-weight: 200 800; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Manrope'; src: url('../fonts/Manrope-Light.ttf') format('truetype'); font-weight: 300; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Manrope'; src: url('../fonts/Manrope-Regular.ttf') format('truetype'); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Manrope'; src: url('../fonts/Manrope-Medium.ttf') format('truetype'); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Manrope'; src: url('../fonts/Manrope-SemiBold.ttf') format('truetype'); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Manrope'; src: url('../fonts/Manrope-Bold.ttf') format('truetype'); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Manrope'; src: url('../fonts/Manrope-ExtraBold.ttf') format('truetype'); font-weight: 800; font-style: normal; font-display: swap; }
+</style>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Manrope', sans-serif; background: #F4F6F8; padding: 20px; display: flex; flex-direction: column; gap: 16px; }
+.label { font-size: 11px; font-weight: 600; color: #94A3B8; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 4px; }
+.row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+button {
+  font-family: 'Manrope', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 18px;
+  cursor: pointer;
+  transition: all 150ms ease-out;
+  line-height: 1.4;
+}
+.btn-primary { background: #1A5FB4; color: #fff; }
+.btn-primary:hover { background: #163D6E; }
+.btn-secondary { background: #fff; color: #1A5FB4; border: 1px solid #1A5FB4; }
+.btn-secondary:hover { background: #E8F4FD; }
+.btn-ghost { background: transparent; color: #334155; border: 1px solid #D1D9E0; }
+.btn-ghost:hover { background: #F4F6F8; }
+.btn-danger { background: #C94B4B; color: #fff; }
+.btn-danger:hover { background: #9B3535; }
+.btn-sm { font-size: 12px; padding: 5px 12px; }
+.btn-lg { font-size: 16px; padding: 11px 24px; }
+.btn-disabled { opacity: 0.4; cursor: not-allowed; }
+</style>
+</head>
+<body>
+<div>
+  <div class="label">Variantes</div>
+  <div class="row">
+    <button class="btn-primary">Enviar cotação</button>
+    <button class="btn-secondary">Ver detalhes</button>
+    <button class="btn-ghost">Cancelar</button>
+    <button class="btn-danger">Excluir pedido</button>
+  </div>
+</div>
+<div>
+  <div class="label">Tamanhos</div>
+  <div class="row">
+    <button class="btn-primary btn-sm">Atualizar status</button>
+    <button class="btn-primary">Enviar cotação</button>
+    <button class="btn-primary btn-lg">Rastrear carga</button>
+  </div>
+</div>
+<div>
+  <div class="label">Estados</div>
+  <div class="row">
+    <button class="btn-primary">Normal</button>
+    <button class="btn-primary btn-disabled" disabled>Desabilitado</button>
+    <button class="btn-secondary btn-disabled" disabled>Desabilitado</button>
+  </div>
+</div>
+</body>
+</html>

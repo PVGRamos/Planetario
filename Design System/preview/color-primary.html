@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"><style>
+@font-face { font-family: 'Manrope'; src: url('../fonts/Manrope-VariableFont_wght.ttf') format('truetype-variations'); font-weight: 200 800; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Manrope'; src: url('../fonts/Manrope-Light.ttf') format('truetype'); font-weight: 300; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Manrope'; src: url('../fonts/Manrope-Regular.ttf') format('truetype'); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Manrope'; src: url('../fonts/Manrope-Medium.ttf') format('truetype'); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Manrope'; src: url('../fonts/Manrope-SemiBold.ttf') format('truetype'); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Manrope'; src: url('../fonts/Manrope-Bold.ttf') format('truetype'); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Manrope'; src: url('../fonts/Manrope-ExtraBold.ttf') format('truetype'); font-weight: 800; font-style: normal; font-display: swap; }
+</style>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Manrope', sans-serif; background: #fff; padding: 20px; }
+.row { display: flex; gap: 10px; flex-wrap: wrap; }
+.swatch { border-radius: 6px; overflow: hidden; flex: 1; min-width: 70px; }
+.color-block { height: 56px; }
+.swatch-info { padding: 6px 8px; background: #fff; border: 1px solid #E8EDF2; border-top: none; border-radius: 0 0 6px 6px; }
+.swatch-name { font-size: 11px; font-weight: 600; color: #0F1C2E; }
+.swatch-hex  { font-size: 10px; color: #64748B; font-family: monospace; margin-top: 1px; }
+.label { font-size: 11px; font-weight: 600; color: #64748B; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 8px; margin-top: 16px; }
+.label:first-child { margin-top: 0; }
+</style>
+</head>
+<body>
+<div class="label">Primary Scale</div>
+<div class="row">
+  <div class="swatch"><div class="color-block" style="background:#071728"></div><div class="swatch-info"><div class="swatch-name">900</div><div class="swatch-hex">#071728</div></div></div>
+  <div class="swatch"><div class="color-block" style="background:#0F2A4A"></div><div class="swatch-info"><div class="swatch-name">800</div><div class="swatch-hex">#0F2A4A</div></div></div>
+  <div class="swatch"><div class="color-block" style="background:#163D6E"></div><div class="swatch-info"><div class="swatch-name">700</div><div class="swatch-hex">#163D6E</div></div></div>
+  <div class="swatch"><div class="color-block" style="background:#1A5FB4"></div><div class="swatch-info"><div class="swatch-name">600</div><div class="swatch-hex">#1A5FB4</div></div></div>
+  <div class="swatch"><div class="color-block" style="background:#2574D4"></div><div class="swatch-info"><div class="swatch-name">500</div><div class="swatch-hex">#2574D4</div></div></div>
+  <div class="swatch"><div class="color-block" style="background:#2D9CDB"></div><div class="swatch-info"><div class="swatch-name">400</div><div class="swatch-hex">#2D9CDB</div></div></div>
+  <div class="swatch"><div class="color-block" style="background:#7EC8F0"></div><div class="swatch-info"><div class="swatch-name">300</div><div class="swatch-hex">#7EC8F0</div></div></div>
+  <div class="swatch"><div class="color-block" style="background:#BAE0F8"></div><div class="swatch-info"><div class="swatch-name">200</div><div class="swatch-hex">#BAE0F8</div></div></div>
+  <div class="swatch"><div class="color-block" style="background:#E8F4FD; border: 1px solid #D1D9E0; border-bottom:none; border-radius: 6px 6px 0 0;"></div><div class="swatch-info"><div class="swatch-name">100</div><div class="swatch-hex">#E8F4FD</div></div></div>
+</div>
+</body>
+</html>

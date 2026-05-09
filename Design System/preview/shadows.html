@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"><style>
+@font-face { font-family: 'Manrope'; src: url('../fonts/Manrope-VariableFont_wght.ttf') format('truetype-variations'); font-weight: 200 800; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Manrope'; src: url('../fonts/Manrope-Light.ttf') format('truetype'); font-weight: 300; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Manrope'; src: url('../fonts/Manrope-Regular.ttf') format('truetype'); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Manrope'; src: url('../fonts/Manrope-Medium.ttf') format('truetype'); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Manrope'; src: url('../fonts/Manrope-SemiBold.ttf') format('truetype'); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Manrope'; src: url('../fonts/Manrope-Bold.ttf') format('truetype'); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Manrope'; src: url('../fonts/Manrope-ExtraBold.ttf') format('truetype'); font-weight: 800; font-style: normal; font-display: swap; }
+</style>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Manrope', sans-serif; background: #F4F6F8; padding: 24px; display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start; }
+.shadow-card { background: #fff; border-radius: 8px; padding: 20px 24px; width: 140px; display: flex; flex-direction: column; gap: 8px; }
+.sh-label { font-size: 11px; font-weight: 600; color: #94A3B8; text-transform: uppercase; letter-spacing: 0.06em; }
+.sh-name { font-size: 13px; font-weight: 600; color: #0F1C2E; }
+.sh-value { font-size: 10px; font-family: 'IBM Plex Mono', monospace; color: #94A3B8; line-height: 1.4; }
+</style>
+</head>
+<body>
+  <div class="shadow-card" style="box-shadow: 0 1px 2px rgba(0,0,0,0.05);">
+    <div class="sh-label">xs</div>
+    <div class="sh-name">Subtle</div>
+    <div class="sh-value">0 1px 2px<br>rgba(0,0,0,.05)</div>
+  </div>
+  <div class="shadow-card" style="box-shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06);">
+    <div class="sh-label">sm</div>
+    <div class="sh-name">Card</div>
+    <div class="sh-value">0 1px 3px<br>rgba(0,0,0,.08)</div>
+  </div>
+  <div class="shadow-card" style="box-shadow: 0 4px 6px rgba(0,0,0,0.07), 0 2px 4px rgba(0,0,0,0.06);">
+    <div class="sh-label">md</div>
+    <div class="sh-name">Raised</div>
+    <div class="sh-value">0 4px 6px<br>rgba(0,0,0,.07)</div>
+  </div>
+  <div class="shadow-card" style="box-shadow: 0 4px 16px rgba(0,0,0,0.12), 0 2px 6px rgba(0,0,0,0.08);">
+    <div class="sh-label">lg</div>
+    <div class="sh-name">Dropdown</div>
+    <div class="sh-value">0 4px 16px<br>rgba(0,0,0,.12)</div>
+  </div>
+  <div class="shadow-card" style="box-shadow: 0 0 0 3px rgba(26,95,180,0.25); outline: 1px solid #1A5FB4;">
+    <div class="sh-label">focus</div>
+    <div class="sh-name">Focus Ring</div>
+    <div class="sh-value">0 0 0 3px<br>rgba(26,95,180,.25)</div>
+  </div>
+</body>
+</html>

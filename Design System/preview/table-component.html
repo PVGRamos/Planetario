@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"><style>
+@font-face { font-family: 'Manrope'; src: url('../fonts/Manrope-VariableFont_wght.ttf') format('truetype-variations'); font-weight: 200 800; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Manrope'; src: url('../fonts/Manrope-Light.ttf') format('truetype'); font-weight: 300; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Manrope'; src: url('../fonts/Manrope-Regular.ttf') format('truetype'); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Manrope'; src: url('../fonts/Manrope-Medium.ttf') format('truetype'); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Manrope'; src: url('../fonts/Manrope-SemiBold.ttf') format('truetype'); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Manrope'; src: url('../fonts/Manrope-Bold.ttf') format('truetype'); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Manrope'; src: url('../fonts/Manrope-ExtraBold.ttf') format('truetype'); font-weight: 800; font-style: normal; font-display: swap; }
+</style>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Manrope', sans-serif; background: #F4F6F8; padding: 16px; }
+.table-wrap { background: #fff; border-radius: 8px; border: 1px solid #D1D9E0; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.07); }
+table { width: 100%; border-collapse: collapse; }
+thead th { background: #F4F6F8; padding: 10px 14px; font-size: 11px; font-weight: 600; color: #64748B; text-transform: uppercase; letter-spacing: 0.06em; text-align: left; border-bottom: 1px solid #D1D9E0; white-space: nowrap; }
+tbody tr { border-bottom: 1px solid #E8EDF2; transition: background 150ms; }
+tbody tr:last-child { border-bottom: none; }
+tbody tr:hover { background: #F4F6F8; }
+tbody td { padding: 10px 14px; font-size: 13px; color: #0F1C2E; }
+.mono { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #64748B; }
+.badge { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; font-weight: 600; border-radius: 4px; padding: 2px 8px; white-space: nowrap; }
+.dot { width: 5px; height: 5px; border-radius: 50%; }
+.badge-success { background: #DCFCE7; color: #15803D; }
+.badge-info    { background: #DBEAFE; color: #1D4ED8; }
+.badge-warning { background: #FEF3C7; color: #B45309; }
+.badge-error   { background: #FDE8E8; color: #9B3535; }
+</style>
+</head>
+<body>
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Código</th>
+        <th>Cliente</th>
+        <th>Origem</th>
+        <th>Destino</th>
+        <th>Status</th>
+        <th>Última atualização</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="mono">PC-08421</td>
+        <td style="font-weight:500">Metalúrgica Souza</td>
+        <td>São Paulo, SP</td>
+        <td>Curitiba, PR</td>
+        <td><span class="badge badge-info"><span class="dot" style="background:#1A5FB4"></span>Em transporte</span></td>
+        <td style="color:#64748B;font-size:12px;">26 abr, 09:15</td>
+      </tr>
+      <tr>
+        <td class="mono">PC-08420</td>
+        <td style="font-weight:500">Distribuidora Norte</td>
+        <td>Campinas, SP</td>
+        <td>Manaus, AM</td>
+        <td><span class="badge badge-error"><span class="dot" style="background:#C94B4B"></span>Atrasado</span></td>
+        <td style="color:#64748B;font-size:12px;">26 abr, 07:42</td>
+      </tr>
+      <tr>
+        <td class="mono">PC-08418</td>
+        <td style="font-weight:500">LogFlex Comércio</td>
+        <td>Rio de Janeiro, RJ</td>
+        <td>Belo Horizonte, MG</td>
+        <td><span class="badge badge-success"><span class="dot" style="background:#16A34A"></span>Finalizado</span></td>
+        <td style="color:#64748B;font-size:12px;">25 abr, 18:30</td>
+      </tr>
+      <tr>
+        <td class="mono">PC-08415</td>
+        <td style="font-weight:500">Agro Sul Exportações</td>
+        <td>Londrina, PR</td>
+        <td>Santos, SP</td>
+        <td><span class="badge badge-warning"><span class="dot" style="background:#D97706"></span>Atenção</span></td>
+        <td style="color:#64748B;font-size:12px;">26 abr, 08:00</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>

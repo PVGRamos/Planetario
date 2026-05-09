@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"><style>
+@font-face { font-family: 'Manrope'; src: url('../fonts/Manrope-VariableFont_wght.ttf') format('truetype-variations'); font-weight: 200 800; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Manrope'; src: url('../fonts/Manrope-Light.ttf') format('truetype'); font-weight: 300; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Manrope'; src: url('../fonts/Manrope-Regular.ttf') format('truetype'); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Manrope'; src: url('../fonts/Manrope-Medium.ttf') format('truetype'); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Manrope'; src: url('../fonts/Manrope-SemiBold.ttf') format('truetype'); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Manrope'; src: url('../fonts/Manrope-Bold.ttf') format('truetype'); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Manrope'; src: url('../fonts/Manrope-ExtraBold.ttf') format('truetype'); font-weight: 800; font-style: normal; font-display: swap; }
+</style>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Manrope', sans-serif; background: #fff; padding: 20px; }
+.grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.status-card { border-radius: 8px; overflow: hidden; }
+.top { height: 48px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; letter-spacing: 0.04em; }
+.mid { display: flex; gap: 0; }
+.shade { flex: 1; height: 28px; }
+.info { padding: 8px 10px; border: 1px solid #E8EDF2; border-top: none; border-radius: 0 0 8px 8px; }
+.name { font-size: 12px; font-weight: 600; color: #0F1C2E; }
+.hex { font-size: 10px; color: #64748B; font-family: monospace; }
+.label { font-size: 11px; font-weight: 600; color: #64748B; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 10px; }
+</style>
+</head>
+<body>
+<div class="label">Status Colors</div>
+<div class="grid">
+  <div class="status-card">
+    <div class="top" style="background:#16A34A; color:#fff;">Concluído</div>
+    <div class="mid">
+      <div class="shade" style="background:#15803D"></div>
+      <div class="shade" style="background:#16A34A"></div>
+      <div class="shade" style="background:#DCFCE7"></div>
+    </div>
+    <div class="info"><div class="name">Sucesso / Verde</div><div class="hex">#16A34A</div></div>
+  </div>
+  <div class="status-card">
+    <div class="top" style="background:#D97706; color:#fff;">Atenção</div>
+    <div class="mid">
+      <div class="shade" style="background:#B45309"></div>
+      <div class="shade" style="background:#D97706"></div>
+      <div class="shade" style="background:#FEF3C7"></div>
+    </div>
+    <div class="info"><div class="name">Atenção / Amarelo</div><div class="hex">#D97706</div></div>
+  </div>
+  <div class="status-card">
+    <div class="top" style="background:#C94B4B; color:#fff;">Atrasado</div>
+    <div class="mid">
+      <div class="shade" style="background:#9B3535"></div>
+      <div class="shade" style="background:#C94B4B"></div>
+      <div class="shade" style="background:#FDE8E8"></div>
+    </div>
+    <div class="info"><div class="name">Erro / Vermelho</div><div class="hex">#C94B4B</div></div>
+  </div>
+  <div class="status-card">
+    <div class="top" style="background:#1A5FB4; color:#fff;">Em andamento</div>
+    <div class="mid">
+      <div class="shade" style="background:#1D4ED8"></div>
+      <div class="shade" style="background:#1A5FB4"></div>
+      <div class="shade" style="background:#DBEAFE"></div>
+    </div>
+    <div class="info"><div class="name">Info / Azul</div><div class="hex">#1A5FB4</div></div>
+  </div>
+</div>
+</body>
+</html>

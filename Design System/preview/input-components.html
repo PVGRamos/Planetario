@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"><style>
+@font-face { font-family: 'Manrope'; src: url('../fonts/Manrope-VariableFont_wght.ttf') format('truetype-variations'); font-weight: 200 800; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Manrope'; src: url('../fonts/Manrope-Light.ttf') format('truetype'); font-weight: 300; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Manrope'; src: url('../fonts/Manrope-Regular.ttf') format('truetype'); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Manrope'; src: url('../fonts/Manrope-Medium.ttf') format('truetype'); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Manrope'; src: url('../fonts/Manrope-SemiBold.ttf') format('truetype'); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Manrope'; src: url('../fonts/Manrope-Bold.ttf') format('truetype'); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Manrope'; src: url('../fonts/Manrope-ExtraBold.ttf') format('truetype'); font-weight: 800; font-style: normal; font-display: swap; }
+</style>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Manrope', sans-serif; background: #F4F6F8; padding: 20px; display: flex; flex-direction: column; gap: 16px; }
+.label { font-size: 11px; font-weight: 600; color: #94A3B8; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px; }
+.row { display: flex; gap: 16px; flex-wrap: wrap; }
+.field { display: flex; flex-direction: column; gap: 5px; flex: 1; min-width: 160px; }
+.field label { font-size: 13px; font-weight: 500; color: #0F1C2E; }
+.field input, .field select {
+  font-family: 'Manrope', sans-serif;
+  font-size: 14px; color: #0F1C2E;
+  border: 1px solid #D1D9E0; border-radius: 6px;
+  padding: 8px 12px; background: #fff;
+  transition: border-color 150ms, box-shadow 150ms;
+  outline: none;
+}
+.field input:focus, .field select:focus {
+  border-color: #1A5FB4;
+  box-shadow: 0 0 0 3px rgba(26,95,180,0.18);
+}
+.field input.error { border-color: #DC2626; }
+.field .hint { font-size: 12px; color: #64748B; }
+.field .err-msg { font-size: 12px; color: #DC2626; }
+</style>
+</head>
+<body>
+<div>
+  <div class="label">Inputs</div>
+  <div class="row">
+    <div class="field">
+      <label>Origem</label>
+      <input type="text" placeholder="Ex: São Paulo, SP">
+      <span class="hint">Cidade ou CEP de origem</span>
+    </div>
+    <div class="field">
+      <label>Destino</label>
+      <input type="text" value="Belo Horizonte, MG">
+    </div>
+    <div class="field">
+      <label>Código do pedido</label>
+      <input type="text" class="error" value="PC-0000">
+      <span class="err-msg">Código não encontrado</span>
+    </div>
+    <div class="field">
+      <label>Status</label>
+      <select>
+        <option>Em transporte</option>
+        <option>Finalizado</option>
+        <option>Atrasado</option>
+      </select>
+    </div>
+  </div>
+</div>
+</body>
+</html>

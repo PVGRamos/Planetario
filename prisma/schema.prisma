@@ -1,0 +1,136 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  name      String?
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("users")
+}
+
+model Company {
+  id           String        @id @default(cuid())
+  name         String
+  transactions Transaction[]
+  createdAt    DateTime      @default(now())
+
+  @@map("companies")
+}
+
+model Category {
+  id            String          @id @default(cuid())
+  name          String
+  type          TransactionType
+  subcategories Subcategory[]
+  transactions  Transaction[]
+  createdAt     DateTime        @default(now())
+
+  @@map("categories")
+}
+
+model Subcategory {
+  id           String        @id @default(cuid())
+  name         String
+  categoryId   String
+  category     Category      @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  transactions Transaction[]
+  createdAt    DateTime      @default(now())
+
+  @@map("subcategories")
+}
+
+model CostCenter {
+  id           String        @id @default(cuid())
+  name         String
+  transactions Transaction[]
+  createdAt    DateTime      @default(now())
+
+  @@map("cost_centers")
+}
+
+model Supplier {
+  id           String        @id @default(cuid())
+  name         String
+  email        String?
+  phone        String?
+  active       Boolean       @default(true)
+  transactions Transaction[]
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+
+  @@map("suppliers")
+}
+
+model Customer {
+  id           String        @id @default(cuid())
+  name         String
+  email        String?
+  phone        String?
+  active       Boolean       @default(true)
+  transactions Transaction[]
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+
+  @@map("customers")
+}
+
+enum TransactionType {
+  INCOME
+  EXPENSE
+}
+
+enum PaymentMethod {
+  PIX
+  DINHEIRO
+  BOLETO
+  TRANSFERENCIA
+  CARTAO_CREDITO
+  CARTAO_DEBITO
+}
+
+enum TransactionStatus {
+  PENDING
+  PAID
+  OVERDUE
+  CANCELED
+}
+
+model Transaction {
+  id             String            @id @default(cuid())
+  companyId      String
+  company        Company           @relation(fields: [companyId], references: [id])
+  type           TransactionType
+  categoryId     String
+  category       Category          @relation(fields: [categoryId], references: [id])
+  subcategoryId  String?
+  subcategory    Subcategory?      @relation(fields: [subcategoryId], references: [id])
+  costCenterId   String?
+  costCenter     CostCenter?       @relation(fields: [costCenterId], references: [id])
+  supplierId     String?
+  supplier       Supplier?         @relation(fields: [supplierId], references: [id])
+  customerId     String?
+  customer       Customer?         @relation(fields: [customerId], references: [id])
+  description    String
+  documentRef    String?
+  amount         Decimal           @db.Decimal(12, 2)
+  paymentMethod  PaymentMethod
+  status         TransactionStatus @default(PENDING)
+  competencyDate DateTime
+  dueDate        DateTime?
+  paymentDate    DateTime?
+  notes          String?
+  createdAt      DateTime          @default(now())
+  updatedAt      DateTime          @updatedAt
+
+  @@map("transactions")
+}

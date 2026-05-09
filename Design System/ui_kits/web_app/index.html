@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Planeta Cargas — Sistema Logístico</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"><style>
+@font-face { font-family: 'Manrope'; src: url('../../fonts/Manrope-VariableFont_wght.ttf') format('truetype-variations'); font-weight: 200 800; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Manrope'; src: url('../../fonts/Manrope-Light.ttf') format('truetype'); font-weight: 300; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Manrope'; src: url('../../fonts/Manrope-Regular.ttf') format('truetype'); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Manrope'; src: url('../../fonts/Manrope-Medium.ttf') format('truetype'); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Manrope'; src: url('../../fonts/Manrope-SemiBold.ttf') format('truetype'); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Manrope'; src: url('../../fonts/Manrope-Bold.ttf') format('truetype'); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Manrope'; src: url('../../fonts/Manrope-ExtraBold.ttf') format('truetype'); font-weight: 800; font-style: normal; font-display: swap; }
+</style>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body, #root { height: 100%; width: 100%; overflow: hidden; }
+  body { font-family: 'Manrope', sans-serif; background: #F4F6F8; color: #0F1C2E; -webkit-font-smoothing: antialiased; }
+  button { font-family: inherit; }
+  input, select, textarea { font-family: inherit; }
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: #D1D9E0; border-radius: 3px; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel" src="Sidebar.jsx"></script>
+<script type="text/babel" src="TopBar.jsx"></script>
+<script type="text/babel" src="StatusBadge.jsx"></script>
+<script type="text/babel" src="KPICards.jsx"></script>
+<script type="text/babel" src="DataTable.jsx"></script>
+<script type="text/babel" src="TrackingTimeline.jsx"></script>
+
+<script type="text/babel">
+const { useState, useEffect, useRef } = React;
+
+/* ── Dashboard Screen ── */
+function DashboardScreen({ onNavigate }) {
+  const alerts = CARGAS_DATA.filter(c => c.status === 'Atrasado' || c.status === 'Atenção');
+
+  return (
+    <div style={{ flex: 1, overflowY: 'auto', padding: 24, display: 'flex', flexDirection: 'column', gap: 20 }}>
+      {/* KPIs */}
+      <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap' }}>
+        <KPICard label="Em transporte" value="142" sub="cargas ativas" deltaText="12% vs ontem" deltaUp={true} />
+        <KPICard label="Atrasos" value="8" sub="cargas com atraso" deltaText="3 desde manhã" deltaUp={false} />
+        <KPICard label="Entregues hoje" value="37" sub="concluídas" deltaText="8% vs ontem" deltaUp={true} />
+        <KPICard label="Cotações abertas" value="14" sub="aguardando aprovação" />
+      </div>
+
+      {/* Alerts */}
+      {alerts.length > 0 && (
+        <div style={{ background: '#FEF3C7', border: '1px solid #D97706', borderRadius: 8, padding: '12px 16px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
+            <i data-lucide="alert-triangle" style={{ width: 16, height: 16, color: '#D97706', strokeWidth: 2 }}></i>
+            <span style={{ fontSize: 13, fontWeight: 700, color: '#B45309' }}>
+              {alerts.length} carga{alerts.length > 1 ? 's' : ''} requer{alerts.length === 1 ? '' : 'em'} atenção
+            </span>
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+            {alerts.map(a => (
+              <div key={a.code} onClick={() => onNavigate('rastreamento', a)}
+                style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', cursor: 'pointer', padding: '6px 10px', background: 'rgba(255,255,255,0.6)', borderRadius: 6 }}>
+                <span style={{ fontSize: 12, fontFamily: "'IBM Plex Mono',monospace", color: '#64748B' }}>{a.code}</span>
+                <span style={{ fontSize: 13, fontWeight: 500, color: '#0F1C2E' }}>{a.client}</span>
+                <StatusBadge status={a.status} />
+                <span style={{ fontSize: 12, color: '#64748B' }}>{a.from} → {a.to}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Recent */}
+      <div>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
+          <h3 style={{ fontSize: 15, fontWeight: 700, color: '#0F1C2E' }}>Cargas recentes</h3>
+          <button onClick={() => onNavigate('cargas')} style={{
+            fontSize: 13, color: '#1A5FB4', background: 'none', border: 'none', cursor: 'pointer', fontFamily: 'inherit', fontWeight: 500,
+          }}>Ver todas →</button>
+        </div>
+        <DataTable data={CARGAS_DATA.slice(0, 5)} onSelectRow={r => onNavigate('rastreamento', r)} />
+      </div>
+    </div>
+  );
+}
+
+/* ── Cargas (List) Screen ── */
+function CargasScreen({ onSelectRow }) {
+  return (
+    <div style={{ flex: 1, overflowY: 'auto', padding: 24 }}>
+      <DataTable data={CARGAS_DATA} onSelectRow={onSelectRow} />
+    </div>
+  );
+}
+
+/* ── Rastreamento (Detail) Screen ── */
+function RastreamentoScreen({ cargo, onBack }) {
+  const c = cargo || CARGAS_DATA[0];
+  return (
+    <div style={{ flex: 1, overflowY: 'auto', padding: 24, display: 'flex', flexDirection: 'column', gap: 16 }}>
+      {/* Back */}
+      <button onClick={onBack} style={{
+        display: 'inline-flex', alignItems: 'center', gap: 6,
+        background: 'none', border: 'none', cursor: 'pointer',
+        fontSize: 13, color: '#64748B', fontFamily: 'inherit', padding: 0,
+      }}>
+        <i data-lucide="arrow-left" style={{ width: 15, height: 15, strokeWidth: 2 }}></i>
+        Voltar para cargas
+      </button>
+
+      <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap', alignItems: 'flex-start' }}>
+        {/* Main detail card */}
+        <div style={{ flex: 2, minWidth: 300, background: '#fff', borderRadius: 8, border: '1px solid #D1D9E0', boxShadow: '0 1px 3px rgba(0,0,0,0.07)', overflow: 'hidden' }}>
+          <div style={{ padding: '16px 20px', borderBottom: '1px solid #E8EDF2', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+            <div>
+              <div style={{ fontSize: 11, color: '#94A3B8', fontFamily: "'IBM Plex Mono',monospace", marginBottom: 2 }}>{c.code}</div>
+              <div style={{ fontSize: 18, fontWeight: 700, color: '#0F1C2E' }}>{c.client}</div>
+              <div style={{ fontSize: 13, color: '#64748B', marginTop: 2 }}>{c.from} → {c.to}</div>
+            </div>
+            <StatusBadge status={c.status} />
+          </div>
+
+          <div style={{ padding: '16px 20px', display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16, borderBottom: '1px solid #E8EDF2' }}>
+            {[
+              { label: 'Origem', value: c.from },
+              { label: 'Destino', value: c.to },
+              { label: 'Última atualização', value: c.updated },
+              { label: 'Motorista', value: 'J. Silva' },
+              { label: 'Veículo', value: 'Truck — ABC-1234' },
+              { label: 'Previsão de entrega', value: '14:30 hoje' },
+            ].map(f => (
+              <div key={f.label}>
+                <div style={{ fontSize: 11, fontWeight: 600, color: '#94A3B8', textTransform: 'uppercase', letterSpacing: '0.06em' }}>{f.label}</div>
+                <div style={{ fontSize: 13, fontWeight: 500, color: '#0F1C2E', marginTop: 3 }}>{f.value}</div>
+              </div>
+            ))}
+          </div>
+
+          {/* Actions */}
+          <div style={{ padding: '12px 20px', display: 'flex', gap: 8 }}>
+            <PrimaryBtn small>Atualizar status</PrimaryBtn>
+            <GhostBtn>Ver comprovante</GhostBtn>
+            <GhostBtn>Exportar</GhostBtn>
+          </div>
+        </div>
+
+        {/* Timeline */}
+        <div style={{ flex: 1, minWidth: 260, background: '#fff', borderRadius: 8, border: '1px solid #D1D9E0', boxShadow: '0 1px 3px rgba(0,0,0,0.07)', padding: '16px 20px' }}>
+          <div style={{ fontSize: 13, fontWeight: 700, color: '#0F1C2E', marginBottom: 16 }}>Linha do tempo</div>
+          <TrackingTimeline cargo={c} />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ── Empty State Screen ── */
+function EmptyScreen({ title, action, onAction }) {
+  return (
+    <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 16, padding: 40 }}>
+      <i data-lucide="inbox" style={{ width: 48, height: 48, color: '#D1D9E0', strokeWidth: 1.25 }}></i>
+      <div style={{ textAlign: 'center' }}>
+        <div style={{ fontSize: 15, fontWeight: 600, color: '#334155' }}>{title}</div>
+        {action && <div style={{ fontSize: 13, color: '#94A3B8', marginTop: 4 }}>{action}</div>}
+      </div>
+      {onAction && <PrimaryBtn onClick={onAction}>Nova cotação</PrimaryBtn>}
+    </div>
+  );
+}
+
+/* ── App Root ── */
+function App() {
+  const [page, setPage] = useState('dashboard');
+  const [selectedCargo, setSelectedCargo] = useState(null);
+
+  function navigate(p, cargo) {
+    setPage(p);
+    if (cargo) setSelectedCargo(cargo);
+  }
+
+  // Re-run lucide icons on every render
+  useEffect(() => {
+    if (window.lucide) lucide.createIcons();
+  });
+
+  const PAGE_META = {
+    dashboard:    { title: 'Dashboard', subtitle: '26 de abril de 2026' },
+    cargas:       { title: 'Cargas', subtitle: `${CARGAS_DATA.length} cargas encontradas` },
+    rastreamento: { title: 'Rastreamento', subtitle: selectedCargo ? selectedCargo.code : 'Selecione uma carga' },
+    cotacoes:     { title: 'Cotações', subtitle: 'Gerenciar cotações' },
+    relatorios:   { title: 'Relatórios', subtitle: 'Análise operacional' },
+    configuracoes:{ title: 'Configurações', subtitle: 'Preferências do sistema' },
+  };
+
+  const meta = PAGE_META[page] || {};
+
+  const topActions = page === 'cargas' ? (
+    <PrimaryBtn>
+      <i data-lucide="plus" style={{ width: 14, height: 14, strokeWidth: 2.5 }}></i>
+      Nova carga
+    </PrimaryBtn>
+  ) : page === 'cotacoes' ? (
+    <PrimaryBtn>
+      <i data-lucide="plus" style={{ width: 14, height: 14, strokeWidth: 2.5 }}></i>
+      Nova cotação
+    </PrimaryBtn>
+  ) : null;
+
+  return (
+    <div style={{ display: 'flex', height: '100vh', width: '100vw', overflow: 'hidden' }}>
+      <Sidebar activePage={page} onNavigate={p => { setSelectedCargo(null); setPage(p); }} />
+
+      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
+        <TopBar title={meta.title} subtitle={meta.subtitle} actions={topActions} />
+
+        {page === 'dashboard' && <DashboardScreen onNavigate={navigate} />}
+        {page === 'cargas' && <CargasScreen onSelectRow={r => navigate('rastreamento', r)} />}
+        {page === 'rastreamento' && (
+          <RastreamentoScreen
+            cargo={selectedCargo}
+            onBack={() => { setSelectedCargo(null); setPage('cargas'); }}
+          />
+        )}
+        {page === 'cotacoes' && <EmptyScreen title="Nenhuma cotação aberta" action="Crie uma nova cotação para começar" onAction={() => {}} />}
+        {page === 'relatorios' && <EmptyScreen title="Relatórios em construção" action="Em breve disponível" />}
+        {page === 'configuracoes' && <EmptyScreen title="Configurações do sistema" action="Em breve disponível" />}
+      </div>
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>

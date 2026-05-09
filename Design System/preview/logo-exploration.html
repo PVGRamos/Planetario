@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Logo Exploração — Planeta Cargas</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Plus Jakarta Sans', sans-serif; background: #F4F6F8; padding: 32px; display: flex; flex-direction: column; gap: 28px; }
+.option { border-radius: 12px; overflow: hidden; border: 2px solid #E8EDF2; background: #fff; }
+.option-header { padding: 10px 20px; background: #F4F6F8; border-bottom: 1px solid #E8EDF2; display: flex; align-items: center; justify-content: space-between; }
+.option-label { font-size: 11px; font-weight: 700; color: #64748B; text-transform: uppercase; letter-spacing: 0.1em; }
+.option-desc { font-size: 12px; color: #94A3B8; }
+.panels { display: grid; grid-template-columns: 1fr 1fr 1fr; }
+.panel { padding: 36px 28px; display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
+.panel-light  { background: #FFFFFF; border-right: 1px solid #E8EDF2; }
+.panel-grey   { background: #F4F6F8; border-right: 1px solid #E8EDF2; }
+.panel-dark   { background: #0F2A4A; }
+.panel-label  { font-size: 10px; font-weight: 600; color: #CBD5E1; text-transform: uppercase; letter-spacing: 0.08em; }
+.panel-label-dark { color: rgba(255,255,255,0.3); }
+</style>
+</head>
+<body>
+
+<!-- OPÇÃO A: Planeta com anel orbital e nó de rastreamento -->
+<div class="option">
+  <div class="option-header">
+    <span class="option-label">Opção A — Planeta + Órbita</span>
+    <span class="option-desc">Planeta com anel orbital inclinado e nó de entrega</span>
+  </div>
+  <div class="panels">
+    <div class="panel panel-light">
+      <svg width="190" height="56" viewBox="0 0 190 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="pA-grad" cx="38%" cy="33%" r="62%">
+            <stop offset="0%" stop-color="#2574D4"/>
+            <stop offset="100%" stop-color="#0F2A4A"/>
+          </radialGradient>
+        </defs>
+        <!-- Ring back -->
+        <path d="M4 28 Q28 10 46 28" stroke="#2D9CDB" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.3"/>
+        <!-- Planet -->
+        <circle cx="26" cy="28" r="14" fill="url(#pA-grad)"/>
+        <!-- Ring front -->
+        <path d="M4 28 Q28 46 46 28" stroke="#2D9CDB" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <!-- Highlight -->
+        <circle cx="21" cy="22" r="4" fill="white" opacity="0.12"/>
+        <!-- Node on ring -->
+        <circle cx="44" cy="30" r="4" fill="#2D9CDB"/>
+        <circle cx="44" cy="30" r="1.8" fill="white"/>
+        <!-- Wordmark -->
+        <text x="60" y="24" font-family="'Plus Jakarta Sans', sans-serif" font-size="16" font-weight="700" fill="#0F2A4A">Planeta</text>
+        <text x="60" y="42" font-family="'Plus Jakarta Sans', sans-serif" font-size="14" font-weight="400" fill="#1A5FB4" letter-spacing="2.5">Cargas</text>
+      </svg>
+      <div class="panel-label">Fundo claro</div>
+    </div>
+    <div class="panel panel-grey">
+      <svg width="190" height="56" viewBox="0 0 190 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="pA-grad2" cx="38%" cy="33%" r="62%">
+            <stop offset="0%" stop-color="#334155"/>
+            <stop offset="100%" stop-color="#0F1C2E"/>
+          </radialGradient>
+        </defs>
+        <path d="M4 28 Q28 10 46 28" stroke="#94A3B8" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.3"/>
+        <circle cx="26" cy="28" r="14" fill="url(#pA-grad2)"/>
+        <path d="M4 28 Q28 46 46 28" stroke="#64748B" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <circle cx="21" cy="22" r="4" fill="white" opacity="0.08"/>
+        <circle cx="44" cy="30" r="4" fill="#64748B"/>
+        <circle cx="44" cy="30" r="1.8" fill="white"/>
+        <text x="60" y="24" font-family="'Plus Jakarta Sans', sans-serif" font-size="16" font-weight="700" fill="#0F1C2E">Planeta</text>
+        <text x="60" y="42" font-family="'Plus Jakarta Sans', sans-serif" font-size="14" font-weight="400" fill="#334155" letter-spacing="2.5">Cargas</text>
+      </svg>
+      <div class="panel-label">Monocromático</div>
+    </div>
+    <div class="panel panel-dark">
+      <svg width="190" height="56" viewBox="0 0 190 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="pA-grad3" cx="38%" cy="33%" r="62%">
+            <stop offset="0%" stop-color="#2D9CDB"/>
+            <stop offset="100%" stop-color="#163D6E"/>
+          </radialGradient>
+        </defs>
+        <path d="M4 28 Q28 10 46 28" stroke="#7EC8F0" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.35"/>
+        <circle cx="26" cy="28" r="14" fill="url(#pA-grad3)"/>
+        <path d="M4 28 Q28 46 46 28" stroke="#7EC8F0" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <circle cx="21" cy="22" r="4" fill="white" opacity="0.15"/>
+        <circle cx="44" cy="30" r="4" fill="#7EC8F0"/>
+        <circle cx="44" cy="30" r="1.8" fill="#0F2A4A"/>
+        <text x="60" y="24" font-family="'Plus Jakarta Sans', sans-serif" font-size="16" font-weight="700" fill="#FFFFFF">Planeta</text>
+        <text x="60" y="42" font-family="'Plus Jakarta Sans', sans-serif" font-size="14" font-weight="400" fill="#7EC8F0" letter-spacing="2.5">Cargas</text>
+      </svg>
+      <div class="panel-label panel-label-dark">Fundo escuro</div>
+    </div>
+  </div>
+</div>
+
+<!-- OPÇÃO B: Rota com pin de destino e trajetória curva -->
+<div class="option">
+  <div class="option-header">
+    <span class="option-label">Opção B — Rota + Destino</span>
+    <span class="option-desc">Trajetória curva conectando dois pontos — origem e destino</span>
+  </div>
+  <div class="panels">
+    <div class="panel panel-light">
+      <svg width="190" height="56" viewBox="0 0 190 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Route path -->
+        <path d="M6 42 C10 20, 28 10, 44 18" stroke="#1A5FB4" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+        <!-- Origin dot -->
+        <circle cx="6" cy="42" r="4" fill="#D1D9E0"/>
+        <circle cx="6" cy="42" r="2" fill="#64748B"/>
+        <!-- Destination pin -->
+        <circle cx="44" cy="18" r="10" fill="#0F2A4A"/>
+        <circle cx="44" cy="18" r="10" fill="url(#pB-grad)"/>
+        <circle cx="44" cy="18" r="4" fill="white" opacity="0.9"/>
+        <!-- Speed dots along path -->
+        <circle cx="22" cy="24" r="2.5" fill="#2D9CDB" opacity="0.5"/>
+        <circle cx="34" cy="18" r="2" fill="#2D9CDB" opacity="0.35"/>
+        <!-- Wordmark -->
+        <text x="60" y="24" font-family="'Plus Jakarta Sans', sans-serif" font-size="16" font-weight="700" fill="#0F2A4A">Planeta</text>
+        <text x="60" y="42" font-family="'Plus Jakarta Sans', sans-serif" font-size="14" font-weight="400" fill="#1A5FB4" letter-spacing="2.5">Cargas</text>
+        <defs>
+          <radialGradient id="pB-grad" cx="35%" cy="30%" r="65%">
+            <stop offset="0%" stop-color="#1A5FB4"/>
+            <stop offset="100%" stop-color="#0F2A4A"/>
+          </radialGradient>
+        </defs>
+      </svg>
+      <div class="panel-label">Fundo claro</div>
+    </div>
+    <div class="panel panel-grey">
+      <svg width="190" height="56" viewBox="0 0 190 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M6 42 C10 20, 28 10, 44 18" stroke="#334155" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+        <circle cx="6" cy="42" r="4" fill="#E8EDF2"/>
+        <circle cx="6" cy="42" r="2" fill="#94A3B8"/>
+        <circle cx="44" cy="18" r="10" fill="#0F1C2E"/>
+        <circle cx="44" cy="18" r="4" fill="white" opacity="0.7"/>
+        <circle cx="22" cy="24" r="2.5" fill="#64748B" opacity="0.5"/>
+        <circle cx="34" cy="18" r="2" fill="#64748B" opacity="0.35"/>
+        <text x="60" y="24" font-family="'Plus Jakarta Sans', sans-serif" font-size="16" font-weight="700" fill="#0F1C2E">Planeta</text>
+        <text x="60" y="42" font-family="'Plus Jakarta Sans', sans-serif" font-size="14" font-weight="400" fill="#334155" letter-spacing="2.5">Cargas</text>
+      </svg>
+      <div class="panel-label">Monocromático</div>
+    </div>
+    <div class="panel panel-dark">
+      <svg width="190" height="56" viewBox="0 0 190 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M6 42 C10 20, 28 10, 44 18" stroke="#2D9CDB" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+        <circle cx="6" cy="42" r="4" fill="rgba(255,255,255,0.15)"/>
+        <circle cx="6" cy="42" r="2" fill="rgba(255,255,255,0.5)"/>
+        <circle cx="44" cy="18" r="10" fill="url(#pB-grad-dark)"/>
+        <circle cx="44" cy="18" r="4" fill="white" opacity="0.9"/>
+        <circle cx="22" cy="24" r="2.5" fill="#7EC8F0" opacity="0.5"/>
+        <circle cx="34" cy="18" r="2" fill="#7EC8F0" opacity="0.4"/>
+        <text x="60" y="24" font-family="'Plus Jakarta Sans', sans-serif" font-size="16" font-weight="700" fill="#FFFFFF">Planeta</text>
+        <text x="60" y="42" font-family="'Plus Jakarta Sans', sans-serif" font-size="14" font-weight="400" fill="#7EC8F0" letter-spacing="2.5">Cargas</text>
+        <defs>
+          <radialGradient id="pB-grad-dark" cx="35%" cy="30%" r="65%">
+            <stop offset="0%" stop-color="#2D9CDB"/>
+            <stop offset="100%" stop-color="#163D6E"/>
+          </radialGradient>
+        </defs>
+      </svg>
+      <div class="panel-label panel-label-dark">Fundo escuro</div>
+    </div>
+  </div>
+</div>
+
+<!-- OPÇÃO C: Grade de pontos conectados (rede logística global) -->
+<div class="option">
+  <div class="option-header">
+    <span class="option-label">Opção C — Rede Logística</span>
+    <span class="option-desc">Nós conectados formando uma grade — fluxo e cobertura global</span>
+  </div>
+  <div class="panels">
+    <div class="panel panel-light">
+      <svg width="190" height="56" viewBox="0 0 190 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Grid connections -->
+        <line x1="8"  y1="14" x2="26" y2="14" stroke="#D1D9E0" stroke-width="1.5"/>
+        <line x1="26" y1="14" x2="44" y2="14" stroke="#D1D9E0" stroke-width="1.5"/>
+        <line x1="8"  y1="14" x2="8"  y2="30" stroke="#D1D9E0" stroke-width="1.5"/>
+        <line x1="26" y1="14" x2="26" y2="30" stroke="#1A5FB4" stroke-width="1.5"/>
+        <line x1="44" y1="14" x2="44" y2="30" stroke="#D1D9E0" stroke-width="1.5"/>
+        <line x1="8"  y1="30" x2="26" y2="30" stroke="#D1D9E0" stroke-width="1.5"/>
+        <line x1="26" y1="30" x2="44" y2="30" stroke="#1A5FB4" stroke-width="1.5"/>
+        <line x1="26" y1="14" x2="44" y2="30" stroke="#2D9CDB" stroke-width="1.5" stroke-dasharray="3 2"/>
+        <line x1="8"  y1="30" x2="26" y2="44" stroke="#D1D9E0" stroke-width="1.5"/>
+        <line x1="26" y1="30" x2="26" y2="44" stroke="#D1D9E0" stroke-width="1.5"/>
+        <line x1="44" y1="30" x2="26" y2="44" stroke="#1A5FB4" stroke-width="1.5"/>
+        <!-- Nodes -->
+        <circle cx="8"  cy="14" r="3" fill="#E8EDF2" stroke="#D1D9E0" stroke-width="1.5"/>
+        <circle cx="26" cy="14" r="3.5" fill="#1A5FB4"/>
+        <circle cx="44" cy="14" r="3" fill="#E8EDF2" stroke="#D1D9E0" stroke-width="1.5"/>
+        <circle cx="8"  cy="30" r="3" fill="#E8EDF2" stroke="#D1D9E0" stroke-width="1.5"/>
+        <circle cx="26" cy="30" r="5" fill="#0F2A4A"/>
+        <circle cx="26" cy="30" r="2.5" fill="white"/>
+        <circle cx="44" cy="30" r="4" fill="#2D9CDB"/>
+        <circle cx="44" cy="30" r="1.8" fill="white"/>
+        <circle cx="26" cy="44" r="3" fill="#E8EDF2" stroke="#D1D9E0" stroke-width="1.5"/>
+        <!-- Wordmark -->
+        <text x="58" y="24" font-family="'Plus Jakarta Sans', sans-serif" font-size="16" font-weight="700" fill="#0F2A4A">Planeta</text>
+        <text x="58" y="42" font-family="'Plus Jakarta Sans', sans-serif" font-size="14" font-weight="400" fill="#1A5FB4" letter-spacing="2.5">Cargas</text>
+      </svg>
+      <div class="panel-label">Fundo claro</div>
+    </div>
+    <div class="panel panel-grey">
+      <svg width="190" height="56" viewBox="0 0 190 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <line x1="8"  y1="14" x2="26" y2="14" stroke="#CBD5E1" stroke-width="1.5"/>
+        <line x1="26" y1="14" x2="44" y2="14" stroke="#CBD5E1" stroke-width="1.5"/>
+        <line x1="8"  y1="14" x2="8"  y2="30" stroke="#CBD5E1" stroke-width="1.5"/>
+        <line x1="26" y1="14" x2="26" y2="30" stroke="#334155" stroke-width="1.5"/>
+        <line x1="44" y1="14" x2="44" y2="30" stroke="#CBD5E1" stroke-width="1.5"/>
+        <line x1="8"  y1="30" x2="26" y2="30" stroke="#CBD5E1" stroke-width="1.5"/>
+        <line x1="26" y1="30" x2="44" y2="30" stroke="#334155" stroke-width="1.5"/>
+        <line x1="26" y1="14" x2="44" y2="30" stroke="#64748B" stroke-width="1.5" stroke-dasharray="3 2"/>
+        <line x1="8"  y1="30" x2="26" y2="44" stroke="#CBD5E1" stroke-width="1.5"/>
+        <line x1="26" y1="30" x2="26" y2="44" stroke="#CBD5E1" stroke-width="1.5"/>
+        <line x1="44" y1="30" x2="26" y2="44" stroke="#334155" stroke-width="1.5"/>
+        <circle cx="8"  cy="14" r="3" fill="#E8EDF2" stroke="#CBD5E1" stroke-width="1.5"/>
+        <circle cx="26" cy="14" r="3.5" fill="#334155"/>
+        <circle cx="44" cy="14" r="3" fill="#E8EDF2" stroke="#CBD5E1" stroke-width="1.5"/>
+        <circle cx="8"  cy="30" r="3" fill="#E8EDF2" stroke="#CBD5E1" stroke-width="1.5"/>
+        <circle cx="26" cy="30" r="5" fill="#0F1C2E"/>
+        <circle cx="26" cy="30" r="2.5" fill="white"/>
+        <circle cx="44" cy="30" r="4" fill="#64748B"/>
+        <circle cx="44" cy="30" r="1.8" fill="white"/>
+        <circle cx="26" cy="44" r="3" fill="#E8EDF2" stroke="#CBD5E1" stroke-width="1.5"/>
+        <text x="58" y="24" font-family="'Plus Jakarta Sans', sans-serif" font-size="16" font-weight="700" fill="#0F1C2E">Planeta</text>
+        <text x="58" y="42" font-family="'Plus Jakarta Sans', sans-serif" font-size="14" font-weight="400" fill="#334155" letter-spacing="2.5">Cargas</text>
+      </svg>
+      <div class="panel-label">Monocromático</div>
+    </div>
+    <div class="panel panel-dark">
+      <svg width="190" height="56" viewBox="0 0 190 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <line x1="8"  y1="14" x2="26" y2="14" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
+        <line x1="26" y1="14" x2="44" y2="14" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
+        <line x1="8"  y1="14" x2="8"  y2="30" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
+        <line x1="26" y1="14" x2="26" y2="30" stroke="#2D9CDB" stroke-width="1.5"/>
+        <line x1="44" y1="14" x2="44" y2="30" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
+        <line x1="8"  y1="30" x2="26" y2="30" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
+        <line x1="26" y1="30" x2="44" y2="30" stroke="#2D9CDB" stroke-width="1.5"/>
+        <line x1="26" y1="14" x2="44" y2="30" stroke="#7EC8F0" stroke-width="1.5" stroke-dasharray="3 2"/>
+        <line x1="8"  y1="30" x2="26" y2="44" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
+        <line x1="26" y1="30" x2="26" y2="44" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
+        <line x1="44" y1="30" x2="26" y2="44" stroke="#2D9CDB" stroke-width="1.5"/>
+        <circle cx="8"  cy="14" r="3" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+        <circle cx="26" cy="14" r="3.5" fill="#2D9CDB"/>
+        <circle cx="44" cy="14" r="3" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+        <circle cx="8"  cy="30" r="3" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+        <circle cx="26" cy="30" r="5" fill="white"/>
+        <circle cx="26" cy="30" r="2.5" fill="#0F2A4A"/>
+        <circle cx="44" cy="30" r="4" fill="#7EC8F0"/>
+        <circle cx="44" cy="30" r="1.8" fill="#0F2A4A"/>
+        <circle cx="26" cy="44" r="3" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+        <text x="58" y="24" font-family="'Plus Jakarta Sans', sans-serif" font-size="16" font-weight="700" fill="#FFFFFF">Planeta</text>
+        <text x="58" y="42" font-family="'Plus Jakarta Sans', sans-serif" font-size="14" font-weight="400" fill="#7EC8F0" letter-spacing="2.5">Cargas</text>
+      </svg>
+      <div class="panel-label panel-label-dark">Fundo escuro</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

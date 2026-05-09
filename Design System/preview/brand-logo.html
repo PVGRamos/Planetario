@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"><style>
+@font-face { font-family: 'Manrope'; src: url('../fonts/Manrope-VariableFont_wght.ttf') format('truetype-variations'); font-weight: 200 800; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Manrope'; src: url('../fonts/Manrope-Light.ttf') format('truetype'); font-weight: 300; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Manrope'; src: url('../fonts/Manrope-Regular.ttf') format('truetype'); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Manrope'; src: url('../fonts/Manrope-Medium.ttf') format('truetype'); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Manrope'; src: url('../fonts/Manrope-SemiBold.ttf') format('truetype'); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Manrope'; src: url('../fonts/Manrope-Bold.ttf') format('truetype'); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Manrope'; src: url('../fonts/Manrope-ExtraBold.ttf') format('truetype'); font-weight: 800; font-style: normal; font-display: swap; }
+</style>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Manrope', sans-serif; background: #fff; }
+.grid { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; min-height: 160px; }
+.panel { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; padding: 24px 16px; }
+.panel-white  { background: #FFFFFF; border-right: 1px solid #E8EDF2; }
+.panel-light  { background: #F4F6F8; border-right: 1px solid #E8EDF2; }
+.panel-blue   { background: #1A5FB4; border-right: 1px solid #163D6E; }
+.panel-dark   { background: #0F2A4A; }
+.lbl { font-size: 10px; font-weight: 600; color: #94A3B8; text-transform: uppercase; letter-spacing: 0.08em; }
+.lbl-inv { color: rgba(255,255,255,0.35); }
+img { max-width: 140px; max-height: 80px; object-fit: contain; }
+</style>
+</head>
+<body>
+<div class="grid">
+  <div class="panel panel-white">
+    <img src="../assets/logo-blue.png" alt="Planeta Cargas — azul">
+    <div class="lbl">Fundo branco</div>
+  </div>
+  <div class="panel panel-light">
+    <img src="../assets/logo-blue.png" alt="Planeta Cargas — azul claro">
+    <div class="lbl">Fundo cinza</div>
+  </div>
+  <div class="panel panel-blue">
+    <img src="../assets/logo-white.png" alt="Planeta Cargas — branco">
+    <div class="lbl lbl-inv">Fundo azul</div>
+  </div>
+  <div class="panel panel-dark">
+    <img src="../assets/logo-white.png" alt="Planeta Cargas — dark">
+    <div class="lbl lbl-inv">Fundo escuro</div>
+  </div>
+</div>
+</body>
+</html>
